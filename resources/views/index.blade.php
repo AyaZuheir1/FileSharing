@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
 </head>
 <body>
-<form method="post" enctype="multipart/form-data" action=""  style="width: 80%; margin:0 auto;">
+<form method="post" enctype="multipart/form-data" action="{{ route('file.upload') }}"  style="width: 80%; margin:0 auto;">
     @csrf
-    <div class="form-group">
-      <label for="job_name"> file name </label>
-      <input type="text" class="form-control" id="job_name"  name="job_name" value="{{ old('job_name') }}">
-    @error('job_name')
-    <span class="text-danger"> {{ $message }}</span> 
-    @enderror
-    </div>
-    
-     
+    <h1>welcome</h1>
+    <table class="table table-striped table-hover">
+                  
+                    <tbody>
+                    <td><a href="{{ route('file.view') }}" class="btn btn-primary">Files</a></td>
+                    <td><a href="{{ route('file.showUploadedFiles') }}" class="btn btn-primary">view files</a></td>
+                    </tbody>
+    </table>
       <div class="form-group">
-        <label for="job_name"> jobs logo   </label>
-    <input type="file" class="form-control" name="photo[]" multiple id="photo">
+        
+    <input type="file" class="form-control" name="file" multiple id="photo">
     @error('photo')
     <span class="text-danger"> {{ $message }}</span> 
     @enderror
       </div>
+      <br>
     <button type="submit" class="btn btn-primary">Add</button>
   </form>
   </body>
