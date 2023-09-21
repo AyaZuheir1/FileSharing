@@ -23,15 +23,13 @@ class FileController extends Controller
 
     public function upload(Request $request)
     {
-    // التحقق من وجود ملفات تم تحديدها في النموذج
   
     if ($request->hasFile('file')) {
         $uploadedFile = $request->file('file');
         $fileName = $uploadedFile->getClientOriginalName();
         $filePath = $uploadedFile->store('uploads');
 
-        // حفظ الملف في مجلد التحميلات (storage/app/public)
-        // $path = $uploadedFile->store('public/uploads');
+
 
         // حفظ بيانات الملف في قاعدة البيانات
         $file = new File();

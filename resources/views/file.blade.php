@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>قائمة الصور المحملة</title>
+    <title> Files </title>
 </head>
 <body>
-    <h1>قائمة الصور المحملة</h1>
+    <h1>Files</h1>
 
     @foreach ($files as $file)
         <div>
