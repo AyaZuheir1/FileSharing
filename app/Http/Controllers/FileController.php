@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\File;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use App\Events\FileDownloaded;
 use Illuminate\Support\Facades\URL;
 
 class FileController extends Controller
@@ -31,7 +31,7 @@ class FileController extends Controller
         $filePath = $uploadedFile->store('uploads');
 
         // حفظ الملف في مجلد التحميلات (storage/app/public)
-        $path = $uploadedFile->store('public/uploads');
+        // $path = $uploadedFile->store('public/uploads');
 
         // حفظ بيانات الملف في قاعدة البيانات
         $file = new File();
@@ -71,7 +71,14 @@ public function downloadFile($id)
 {
     $file = File::findOrFail($id);
     $filePath = storage_path('app/' . $file->file_path);
+    event(new FileDownloaded($file->id));
 
     return response()->download($filePath);
 }
+public function show($id)
+{
+    $file = File::findOrFail($id);
+    return view('show', compact('file'));
+}
+
 }

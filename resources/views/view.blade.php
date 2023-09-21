@@ -19,6 +19,7 @@
                         <tr>
                             <th>#</th>
                             <th>File Name</th>
+                            <th>Number of downloads</th>
                             <th>Share</th>
                             <th>Download</th>
                         </tr>
@@ -32,6 +33,8 @@
                                 
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $file->file_name }}</td>
+                                <td> {{ $file->downloads }}</td>
+
                                 <td><a href="{{ route('file.share', $file->id) }}" target="_blank" class="btn btn-primary">Share</a></td>
                                 <td><a href="{{ route('file.download', $file->id) }}" download class="btn btn-success">Download</a></td>
                             </tr>
